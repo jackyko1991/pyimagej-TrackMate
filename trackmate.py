@@ -1,4 +1,5 @@
 #@ ImagePlus imp
+#@ boolean  headless
 #@ output int foo
 #@ output float bar
 #@ output shape
@@ -18,7 +19,9 @@ The Type parameter is optional, as the output will be treated as Object be defau
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-# imp.show() # you have to use interative mode in pyimagej to trigger this line, triggering ui in headless mode will cause java.awt.HeadlessException error
+if not headless:
+    imp.show() # you have to use interative mode in pyimagej to trigger this line, triggering ui in headless mode will cause java.awt.HeadlessException error
+
 hello = 1
 bar = 0.1
 shape = imp.getDimensions()
